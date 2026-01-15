@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rajat Arora — Robotics, Perception, State Estimation</title>
+
+  <!-- SEO & Social -->
+  <meta name="description" content="Rajat Arora — Robotics engineer specializing in SLAM, visual–inertial navigation, 6-DoF pose estimation and sim-to-real reinforcement learning." />
+  <meta property="og:title" content="Rajat Arora — Robotics, Perception, State Estimation" />
+  <meta property="og:description" content="Robotics engineer focusing on SLAM, pose estimation, semantic segmentation and sim-to-real RL. Based in Toronto, Ontario." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/dp.jpg?v=20250919" />
+  <link rel="icon" href="/assets/favicon.ico" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+
+  <!-- Feather icons -->
+  <script src="https://unpkg.com/feather-icons" defer></script>
+
+  <style>
+    /* Design tokens */
+    :root{
+      --cream: #FFFFFF;    /* page background - white */
+      --khaki: #0EA5E9;    /* badges - sky blue */
+      --brown: #1E293B;    /* primary dark - dark slate blue */
+      --text: #0F172A;     /* text color - deep blue-black */
+      --sand:  #F0F9FF;    /* panels - very light blue */
+      --accent: #3B82F6;   /* buttons - bright blue accent */
+
+      /* type scale */
+      --fs-h1: 3.2rem; --fs-h2:1.8rem; --fs-body:1.01rem; --leading-body:1.6;
+      --radius-sm:10px; --radius-lg:16px;
+      --motion-fast: 150ms; --motion-med: 280ms;
+    }
+
+    @media(min-width:1000px){ :root{ --fs-h1:3.6rem; --fs-h2:2rem; --fs-body:1.02rem; } }
+
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Space Grotesk', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background:var(--cream);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+      font-size:var(--fs-body);
+      line-height:var(--leading-body);
+    }
+
+    /* Container helper to keep consistent gutters */
+    .container{ max-width:1120px; margin:0 auto; padding:0 24px; }
+
+    /* Small utilities */
+    .nav-link { position: relative; display:inline-block; padding:6px 2px; }
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      height: 3px;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      background: var(--accent);
+      transition: width var(--motion-fast) ease;
+      border-radius:2px;
+    }
+    .nav-link:hover:after, .nav-link:focus-within:after { width: 100%; }
+
+    /* Project card hover */
+    .project-card { transition: transform var(--motion-fast), box-shadow var(--motion-fast); border-radius:var(--radius-lg); overflow:hidden; }
+    .project-card:hover { transform: translateY(-8px); box-shadow: 0 24px 50px rgba(59,130,246,0.12); }
+
+    /* Top fold configuration: try to fit into viewport */
+    .hero-fold { min-height: calc(100vh - 72px); display: grid; place-items: center; }
+
+    /* Portrait */
+    .portrait {
+      width:520px;
+      height:420px;
+      object-fit:cover;
+      border-radius:18px;
+      border:none;
+      box-shadow: 0 25px 60px rgba(59,130,246,0.1);
+      display:block;
+    }
+
+    /* Responsive portrait scaling */
+    @media (max-width: 1000px) { .portrait { width:420px; height:340px; } .hero-title { font-size:2.6rem; } }
+    @media (max-width: 760px) { .portrait { width:340px; height:260px; border-radius:12px; } .hero-title { font-size:1.7rem; } }
+    @media (max-width:420px) { .portrait { width:280px; height:200px; } .hero-title { font-size:1.5rem; } }
+
+    /* Education timeline line for desktop only */
+    .edu-line { display:none; }
+    @media (min-width:768px) { .edu-line { display:block; position:absolute; left:18%; right:18%; top:50%; height:2px; background: rgba(62,47,47,0.06); transform: translateY(-50%); z-index:0; } }
+
+    /* Slight translucent panels */
+    .panel {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(59,130,246,0.06);
+      backdrop-filter: blur(8px);
+      border-radius:var(--radius-lg);
+    }
+
+    /* Buttons */
+    .btn{ display:inline-flex; align-items:center; gap:.6rem; border-radius:12px; padding:.75rem 1.25rem; font-weight:600; font-size:0.95rem; }
+    .btn-primary{ background:var(--accent); color:white; box-shadow:0 10px 25px rgba(59,130,246,0.2); border:none; }
+    .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 14px 35px rgba(59,130,246,0.3); }
+    .btn-secondary{ background:transparent; border:2px solid var(--accent); color:var(--accent); }
+
+    /* Images: consistent aspect and lazy-friendly */
+    .media-16-9{ aspect-ratio:16/9; width:100%; height:auto; object-fit:cover; display:block; }
+
+    /* Cards */
+    .card-padded{ padding:1.25rem; }
+
+    /* Focus styles for accessibility */
+    :focus{ outline:none; box-shadow: 0 0 0 5px rgba(59,130,246,0.15); border-radius:8px; }
+    a:focus, button:focus, input:focus, textarea:focus{ outline: none; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){ *{ transition:none !important; animation:none !important; } }
+
+    /* Mobile nav (original simplified) */
+    .mobile-nav{ position:fixed; inset:0; background:rgba(0,0,0,0.45); display:flex; justify-content:flex-end; }
+    .mobile-panel{ width:280px; background:var(--cream); padding:24px; }
+
+    /* Blog grid */
+    .blog-grid{ display:grid; grid-template-columns:repeat(1,1fr); gap:1rem; }
+    @media(min-width:768px){ .blog-grid{ grid-template-columns:repeat(3,1fr); } }
+
+    /* small helpers */
+    .muted{ color:rgba(47,35,35,0.72); }
+
+    /* ---------------------------
+       Mobile improvements & fixes
+       --------------------------- */
+
+    /* ensure header sits above mobile panel */
+    header { position: relative; z-index: 70; }
+
+    /* improved mobile panel: slide-in, overlay, z-index */
+    .mobile-nav { position:fixed; inset:0; background:rgba(0,0,0,0.45); display:flex; justify-content:flex-end; z-index:60; }
+    .mobile-panel{ width:320px; max-width:86vw; background:var(--cream); padding:24px; transform: translateX(100%); transition: transform 260ms var(--motion-med); box-shadow: 0 20px 40px rgba(62,47,47,0.12); border-left:1px solid rgba(62,47,47,0.04); border-radius:0; }
+    .mobile-nav.open .mobile-panel { transform: translateX(0); }
+    .mobile-nav.hidden { display:none; } /* keep existing hidden behavior for initial state */
+
+    /* overlay hit area (clicking overlay closes nav) */
+    .mobile-nav .overlay-hit { flex:1; }
+
+    /* larger hit area for icon buttons */
+    #menuToggle, #mobileClose { padding:10px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; }
+    #menuToggle:focus, #mobileClose:focus { outline: none; box-shadow: 0 0 0 6px rgba(198,156,109,0.14); }
+
+    /* make mobile nav links easy to tap */
+    .mobile-panel nav a { min-height:44px; display:flex; align-items:center; padding:10px 6px; }
+
+    /* logo circle helper (keeps same visual size as original w-16 h-16) */
+    .logo-circle {
+      width:64px; height:64px;
+      min-width:64px; min-height:64px;
+      border-radius:50%;
+      overflow:hidden;
+      display:inline-block;
+      vertical-align:middle;
+      background-size: cover;
+      background-position: center;
+      object-fit: cover;
+      border: 3px solid white;
+      box-shadow: 0 8px 22px rgba(59,130,246,0.12);
+    }
+    @media (max-width:420px){
+      .logo-circle { width:56px; height:56px; min-width:56px; min-height:56px; }
+    }
+
+    /* Keep hero fold usable on small screens but do not alter portrait sizes */
+    @media (max-width:600px){ .hero-fold { min-height: auto; padding: 36px 0; } }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="w-full py-4">
+    <div class="container flex items-center justify-between">
+      <a href="#" class="text-sm font-bold tracking-wider" style="color:var(--accent)">RA</a>
+
+      <nav class="hidden md:flex items-center space-x-6 text-sm" aria-label="Primary navigation">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#publications" class="nav-link">Achievements</a>
+        <a href="#blog" class="nav-link">Blog</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- mobile menu button -->
+      <div class="md:hidden">
+        <button id="menuToggle" aria-label="Open menu" aria-expanded="false" class="text-[var(--text)]">
+          <i data-feather="menu"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile nav (hidden by default) -->
+    <div id="mobileNav" class="mobile-nav hidden" aria-hidden="true">
+      <div class="overlay-hit" role="button" aria-label="Close menu overlay"></div>
+      <div class="mobile-panel panel" role="dialog" aria-modal="true" aria-label="Main mobile menu">
+        <div class="flex items-center justify-between mb-6">
+          <strong style="color:var(--accent)">RA</strong>
+          <button id="mobileClose" aria-label="Close menu"><i data-feather="x"></i></button>
+        </div>
+        <nav class="flex flex-col gap-3">
+          <a href="#about" class="py-2">About</a>
+          <a href="#experience" class="py-2">Experience</a>
+          <a href="#projects" class="py-2">Projects</a>
+          <a href="#publications" class="py-2">Achievements</a>
+          <a href="#blog" class="py-2">Blog</a>
+          <a href="#contact" class="py-2">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- TOP FOLD: name + tagline + portrait + short about -->
+  <main class="hero-fold">
+    <div class="container grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+
+      <!-- portrait (left on desktop) -->
+      <div class="flex justify-center md:justify-start" data-aos="fade-up">
+        <img src="assets/photos/RajatAroraImage.jpeg" alt="Portrait of Siddharth Rama Sushil" class="portrait" loading="lazy" decoding="async" />
+      </div>
+
+      <!-- name + tagline + short about -->
+      <div class="py-6 md:py-0" data-aos="fade-up" data-aos-delay="120">
+        <h1 class="hero-title font-extrabold leading-tight mb-4" style="font-size:var(--fs-h1); color:var(--text)">Rajat Arora</h1>
+        <p class="text-lg md:text-xl mb-6" style="color:var(--text)"><strong>Mobile Robotics</strong> | <strong>State Estimation</strong> | <strong>Embedded Systems</strong> | <strong>Deep Learning</strong> </p>
+
+        <p class="muted mb-6">I develop robust robotics systems combining hardware drivers, perception algorithms, and state estimation. Specialized in multi-sensor fusion, autonomous navigation, and deploying ML models on resource-constrained platforms.</p>
+
+        <div class="flex flex-wrap gap-3 mb-6">
+          <span class="px-3 py-2 rounded-full text-sm font-medium" style="background:var(--khaki); color:var(--text)">State Estimation</span>
+          <span class="px-3 py-2 rounded-full text-sm font-medium" style="background:var(--khaki); color:var(--text)">Motion Planning</span>
+          <span class="px-3 py-2 rounded-full text-sm font-medium" style="background:var(--khaki); color:var(--text)">Autonomous Navigation</span>
+        </div>
+
+        <div class="flex gap-3 items-center">
+          <a href="#contact" class="btn btn-primary" role="button">Get In Touch <i data-feather="send" class="ml-2"></i></a>
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="assets/RajatArora_resume.pdf" class="btn btn-secondary" download>Download CV</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+<!-- ABOUT + EDUCATION SPLIT CARDS (equal-height) -->
+<section id="about-education" class="py-12">
+  <div class="container">
+    <!-- items-stretch makes grid children equal height -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+      <!-- LEFT: About card -->
+      <article class="panel p-6 h-full flex flex-col" data-aos="fade-right">
+        <!-- main content that grows -->
+        <div class="flex-1">
+          <h2 class="text-2xl font-bold mb-4" style="color:var(--text)">About Me</h2>
+
+          <p class="muted mb-4">
+            Currently pursuing MEng. in Aerospace at the University of Toronto. I have hands-on experience developing mobile robotics systems with a focus on hardware integration, state estimation, and perception algorithms.
+          </p>
+
+          <p class="muted mb-4">
+            I specialize in multi-sensor fusion (LiDAR, IMU, cameras), real-time embedded systems programming, and deploying deep learning models on resource-constrained platforms. Experienced with motion planning, odometry, and autonomous navigation for wheeled robots.
+          </p>
+
+          <div class="mt-4 flex flex-wrap gap-3">
+            <span class="px-3 py-2 rounded-full" style="background:var(--khaki); color:var(--text); font-weight:600;">C++ / C</span>
+            <span class="px-3 py-2 rounded-full" style="background:var(--khaki); color:var(--text); font-weight:600;">Python</span>
+            <span class="px-3 py-2 rounded-full" style="background:var(--khaki); color:var(--text); font-weight:600;">EtherCAT / CAN / Modbus</span>
+            <span class="px-3 py-2 rounded-full" style="background:var(--khaki); color:var(--text); font-weight:600;">Deep Learning</span>
+          </div>
+        </div>
+
+        <!-- footer area (stays pinned to bottom) -->
+        <div class="mt-6 flex items-center gap-3">
+          <a href="#contact" class="btn btn-primary">Get In Touch <i data-feather="send" class="ml-2"></i></a>
+          <a href="assets/RajatArora_resume.pdf" class="btn btn-secondary" download>Download CV</a>
+        </div>
+      </article>
+
+      <!-- RIGHT: Education card (equal height, scrolls if content overflows) -->
+      <aside class="panel p-6 h-full flex flex-col" data-aos="fade-left" aria-labelledby="education-heading">
+        <h2 id="education-heading" class="text-2xl font-bold mb-4" style="color:var(--text)">Education</h2>
+
+        <!-- make the list area flexible and scrollable if needed -->
+        <div class="flex-1 overflow-auto pr-2">
+          <!-- Education entry (copy this block for additional schools) -->
+          <div class="flex items-start gap-8 mb-6 pt-2 pl-6">
+            <div class="flex-shrink-0">
+              <img src="assets/photos/uoftlogo.jpeg" alt="UofT logo" class="w-20 h-20 rounded-full object-cover border-2 border-white ring-2 ring-[var(--khaki)]" loading="lazy" decoding="async" />
+            </div>
+            <div class="ml-2">
+              <p class="font-semibold" style="color:var(--text)">University of Toronto, ON, Canada</p>
+              <p class="muted text-sm mb-2">MEng. Aerospace • 2026 – Present</p>
+
+              <div>
+                <p class="font-medium text-sm mb-1">Relevant courses</p>
+                <ul class="text-sm muted list-disc list-inside ml-1">
+                  <li>Motion Planning for Robotics</li>
+                  <li>Introduction to Machine Learning</li>
+                  <li>Mobile Robotics and Perception</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Another education entry -->
+          <div class="flex items-start gap-8 mb-6 pt-2 pl-6">
+            <div class="flex-shrink-0">
+              <img src="assets/photos/thaparLogo.jpeg" alt="Thapar logo" class="w-20 h-20 rounded-full object-cover border-2 border-white ring-2 ring-[var(--khaki)]" loading="lazy" decoding="async" />
+            </div>
+            <div class="ml-2">
+              <p class="font-semibold" style="color:var(--text)">TIET, Patiala, India</p>
+              <p class="muted text-sm mb-2">BE Mechatronics • 2019 – 2023</p>
+
+              <div>
+                <p class="font-medium text-sm mb-1">Relevant courses</p>
+                <ul class="text-sm muted list-disc list-inside ml-1">
+                  <li>Human-centric Robotics</li>
+                  <li>Industrial IoT,</li>
+                  <li>Smart Sensors</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- add more entries as needed -->
+        </div>
+
+     
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="py-12 bg-[var(--sand)]">
+  <div class="container">
+    <h2 class="text-3xl font-bold mb-8 text-center" style="color:var(--text)">Experience</h2>
+
+    <!-- Addverb -->
+    <div class="panel p-6 md:p-8 mb-8" data-aos="fade-up">
+      <div class="flex items-center gap-4 mb-4">
+        <!-- replaced background-div with an img using logo-circle helper -->
+        <img src="assets/c.jpeg?v=20250919" alt="Addverb logo" class="logo-circle" loading="lazy" decoding="async" />
+        <div>
+          <h3 class="text-2xl font-bold" style="color:var(--text)">Addverb Technologies</h3>
+          <p class="muted">Mobile Robotics Engineer • Sep 2023 – Nov 2025</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+          <div>
+            <h4 class="text-lg font-semibold" style="color:var(--accent)">Hardware Drivers & Real-Time Control</h4>
+            <p class="muted mb-3">Developed C++ drivers for motor control and sensor communication across multiple protocols.</p>
+            <ul class="list-disc list-inside muted text-sm space-y-1">
+              <li>Built C++ hardware drivers for real-time motor parameter control (velocities, torques).</li>
+              <li>Implemented PLC communication and BMS integration using EtherCAT, CAN, and Modbus protocols.</li>
+              <li>Developed Python utilities for automatic dataset labeling for bounding boxes and segmentation masks.</li>
+              <li>Ensured data integrity for supervised AI model training with robust validation pipelines.</li>
+            </ul>
+          </div>
+          <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white">
+            <img src="assets/gifs/velo2.gif?v=20250919"
+                 alt="6DOF pose estimation demo"
+                 class="w-full h-36 md:h-44 object-cover"
+                 loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center md:flex-row-reverse">
+          <div>
+            <h4 class="text-lg font-semibold" style="color:var(--accent)">3DOF Pose Estimation & Point Cloud Processing</h4>
+            <p class="muted mb-3">Implemented deep learning-based pose estimation for autonomous docking and manipulation.</p>
+            <ul class="list-disc list-inside muted text-sm space-y-1">
+              <li>Developed 3DOF pallet pose estimation leveraging deep learning and point cloud processing.</li>
+              <li>Validated results using internal datasets and simulation environments for accuracy.</li>
+              <li>Integrated pose outputs with robot control stack for precise autonomous docking operations.</li>
+            </ul>
+          </div>
+          <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white">
+            <img src="assets/gifs/slam-velo.gif?v=20250919"
+                 alt="Visual-inertial SLAM demo"
+                 class="w-full h-36 md:h-44 object-cover"
+                 loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+          <div>
+            <h4 class="text-lg font-semibold" style="color:var(--accent)">Multi-Sensor State Estimation & Localization</h4>
+            <p class="muted mb-3">Implemented advanced state estimation for robust localization in dynamic environments.</p>
+            <ul class="list-disc list-inside muted text-sm space-y-1">
+              <li>Fused multi-sensor data (LiDAR, IMU, wheel odometry) using non-linear optimization.</li>
+              <li>Developed algorithms for accurate robot localization in dynamic warehouse environments.</li>
+              <li>Validated algorithms against ground truth data for production deployment readiness.</li>
+            </ul>
+          </div>
+          <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white">
+            <img src="assets/gifs/velo3.gif?v=20250919"
+                 alt="Semantic segmentation demo"
+                 class="w-full h-36 md:h-44 object-cover"
+                 loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center md:flex-row-reverse">
+          <div>
+            <h4 class="text-lg font-semibold" style="color:var(--accent)">Semantic Segmentation for Obstacle Detection</h4>
+            <p class="muted mb-3">Trained and deployed ML models for robust obstacle detection in navigation systems.</p>
+            <ul class="list-disc list-inside muted text-sm space-y-1">
+              <li>Trained semantic segmentation model for obstacle detection using synthetic data and monocular cameras.</li>
+              <li>Deployed point cloud generation pipeline for enhanced navigation and safety.</li>
+              <li>Optimized model inference for real-time performance on embedded platforms.</li>
+            </ul>
+          </div>
+          <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white">
+            <img src="assets/gifs/simu_velo.gif?v=20250919"
+                 alt="Simulation demo"
+                 class="w-full h-36 md:h-44 object-cover"
+                 loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+          <div>
+            <h4 class="text-lg font-semibold" style="color:var(--accent)">Motion Planning & Autonomous Navigation</h4>
+            <p class="muted mb-3">Developed kinematic libraries and planning algorithms for autonomous mobile robots.</p>
+            <ul class="list-disc list-inside muted text-sm space-y-1">
+              <li>Authored kinematic libraries and global planners with motion primitives.</li>
+              <li>Implemented planning for swerve and tricycle drive AMR models.</li>
+              <li>Validated navigation algorithms in simulation and real-world warehouse environments.</li>
+            </ul>
+          </div>
+          <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white">
+            <img src="assets/gifs/goa_velo.gif?v=20250919"
+                 alt="On-site deployment demo"
+                 class="w-full h-36 md:h-44 object-cover"
+                 loading="lazy" decoding="async">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Cartrack -->
+    <div class="panel p-6 md:p-8 mt-8" data-aos="fade-up" data-aos-delay="80">
+      <div class="flex items-center gap-4 mb-4">
+        <!-- Cartrack logo placeholder -->
+        <img src="assets/photos/cartrackLogo.png" alt="Cartrack logo" class="logo-circle" loading="lazy" decoding="async" />
+        <div>
+          <h3 class="text-2xl font-bold" style="color:var(--text)">Cartrack</h3>
+          <p class="muted">Embedded Robotics Intern • Dec 2022 – Sep 2023</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div>
+          <p class="muted mb-3">Developed advanced state estimation algorithms for vehicle localization and navigation using sensor fusion techniques.</p>
+          <ul class="list-disc list-inside muted text-sm space-y-1">
+            <li>Integrated GPS into IMU-based odometry using Invariant Extended Kalman Filter (IEKF) with pseudo-measurement models.</li>
+            <li>Formulated motion constraint models for improved state estimation in car-like vehicles.</li>
+            <li>Utilized Deep Learning (CNNs) for dynamic adaptation of covariance noise parameters.</li>
+            <li>Implemented core algorithms in C language for optimized deployment on resource-constrained embedded devices.</li>
+          </ul>
+        </div>
+        <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white" style="background: #f0f9ff;">
+          <div style="display: flex; align-items: center; justify-content: center; height: 100%; padding: 20px; font-weight: 600; color: var(--accent);">Sensor Fusion System</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CSIR-CSIO -->
+    <div class="panel p-6 md:p-8 mt-8" data-aos="fade-up" data-aos-delay="100">
+      <div class="flex items-center gap-4 mb-4">
+        <!-- CSIR-CSIO logo placeholder -->
+        <img src="assets/photos/csirlogo.jpeg" alt="CSIR-CSIO logo" class="logo-circle" loading="lazy" decoding="async" />
+        <div>
+          <h3 class="text-2xl font-bold" style="color:var(--text)">CSIR-CSIO</h3>
+          <p class="muted">Research Intern • Jan 2022 – July 2022</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div>
+          <p class="muted mb-3">Designed and implemented visual-inertial sensor fusion algorithms for GPS-denied aerial robotics applications.</p>
+          <ul class="list-disc list-inside muted text-sm space-y-1">
+            <li>Developed MSCKF-based sensor fusion architecture for 6DOF pose estimation using synchronized stereo vision and IMU.</li>
+            <li>Implemented sparse descriptor-based visual odometry pipeline in C++ with ROS framework.</li>
+            <li>Integrated and validated multi-sensor fusion system on embedded hardware for real-time aerial robot navigation.</li>
+            <li>Conducted technical workshop on ROS framework and quaternion mathematics for research community.</li>
+          </ul>
+        </div>
+        <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white" style="background: #f0f9ff;">
+          <div style="display: flex; align-items: center; justify-content: center; height: 100%; padding: 20px; font-weight: 600; color: var(--accent);">Visual-Inertial Fusion</div>
+        </div>
+      </div>
+    </div>
+
+       <!-- Second DRDO removed, keeping only one instance for portfolio balance -->
+
+  </div>
+
+
+  
+
+
+</section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="py-12">
+    <div class="container">
+      <h2 class="text-3xl font-bold mb-6 text-center" style="color:var(--text)">Featured Projects</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Morla Hardware Project -->
+        <article class="project-card panel">
+          <div style="background: linear-gradient(135deg, var(--accent) 0%, #0EA5E9 100%); height: 160px; display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: white;">
+              <i data-feather="cpu" style="width: 40px; height: 40px; margin: 0 auto 10px;"></i>
+              <p style="font-size: 0.9rem; font-weight: 600;">Mobile Platform</p>
+            </div>
+          </div>
+          <div class="card-padded">
+            <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Morla: Autonomous Mobile Robot</h3>
+            <p class="muted mb-4">Plug-and-play mobile platform for point-to-point navigation, LIDAR mapping, and odometry with extensive PID tuning.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">ROS</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">SLAM</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Teensy</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Sensor Fusion</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Path Planning Visualizer -->
+        <article class="project-card panel">
+          <div style="background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%); height: 160px; display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: white;">
+              <i data-feather="map" style="width: 40px; height: 40px; margin: 0 auto 10px;"></i>
+              <p style="font-size: 0.9rem; font-weight: 600;">Path Planning</p>
+            </div>
+          </div>
+          <div class="card-padded">
+            <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Path Planning Visualizer</h3>
+            <p class="muted mb-4">Implemented BFS, Dijkstra, and A* algorithms in C++ with Python GUI integration using Boost.Python for high-performance interoperability.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">C++</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Python</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Algorithms</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Robotics Simulation -->
+        <article class="project-card panel">
+          <div style="background: linear-gradient(135deg, #EC4899 0%, #F97316 100%); height: 160px; display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: white;">
+              <i data-feather="play" style="width: 40px; height: 40px; margin: 0 auto 10px;"></i>
+              <p style="font-size: 0.9rem; font-weight: 600;">Simulation</p>
+            </div>
+          </div>
+          <div class="card-padded">
+            <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Autonomous Navigation & 3D Mapping</h3>
+            <p class="muted mb-4">Simulated autonomous navigation, 3D mapping with RTABMap, and ball-chasing robots using Gazebo and RViz with integrated sensor models.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Gazebo</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">RViz</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">RTABMap</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">AMCL</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Sample Project 1 -->
+        <article class="project-card panel">
+          <div style="background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%); height: 160px; display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: white;">
+              <i data-feather="box" style="width: 40px; height: 40px; margin: 0 auto 10px;"></i>
+              <p style="font-size: 0.9rem; font-weight: 600;">Project 1</p>
+            </div>
+          </div>
+          <div class="card-padded">
+            <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Project Title</h3>
+            <p class="muted mb-4">Add project description here.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Tag1</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Tag2</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Sample Project 2 -->
+        <article class="project-card panel">
+          <div style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); height: 160px; display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: white;">
+              <i data-feather="box" style="width: 40px; height: 40px; margin: 0 auto 10px;"></i>
+              <p style="font-size: 0.9rem; font-weight: 600;">Project 2</p>
+            </div>
+          </div>
+          <div class="card-padded">
+            <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Project Title</h3>
+            <p class="muted mb-4">Add project description here.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Tag1</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Tag2</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Sample Project 3 -->
+        <article class="project-card panel">
+          <div style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); height: 160px; display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: white;">
+              <i data-feather="box" style="width: 40px; height: 40px; margin: 0 auto 10px;"></i>
+              <p style="font-size: 0.9rem; font-weight: 600;">Project 3</p>
+            </div>
+          </div>
+          <div class="card-padded">
+            <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Project Title</h3>
+            <p class="muted mb-4">Add project description here.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Tag1</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Tag2</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+<section id="publications" class="py-12 bg-[var(--sand)]">
+  <div class="container">
+    <h2 class="text-3xl font-bold mb-8 text-center" style="color:var(--text)">Achievements</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- IRC Achievement -->
+      <div
+        class="panel block overflow-hidden"
+        data-aos="fade-up"
+        data-aos-delay="80"
+      >
+        <div style="background: linear-gradient(135deg, var(--accent) 0%, #0EA5E9 100%); padding: 40px 20px; display: flex; align-items: center; justify-content: center; height: 200px;">
+          <div style="text-align: center; color: white;">
+            <i data-feather="rocket" style="width: 48px; height: 48px; margin: 0 auto 10px;"></i>
+            <p style="font-size: 0.85rem; font-weight: 600;">International Rover Challenge</p>
+          </div>
+        </div>
+        <div class="p-4">
+          <h3 class="font-bold" style="color:var(--accent)">Emerging Team of the Year — 2023</h3>
+          <p class="muted text-sm">Designed rocker-bogie suspension for Mars rover, developed arm control drivers, trained YoloV8 for autonomous navigation.</p>
+        </div>
+      </div>
+
+      <!-- Branch Topper -->
+      <div
+        class="panel block overflow-hidden"
+        data-aos="fade-up"
+        data-aos-delay="120"
+      >
+        <div style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); padding: 40px 20px; display: flex; align-items: center; justify-content: center; height: 200px;">
+          <div style="text-align: center; color: white;">
+            <i data-feather="award" style="width: 48px; height: 48px; margin: 0 auto 10px;"></i>
+            <p style="font-size: 0.85rem; font-weight: 600;">Gold Medal</p>
+          </div>
+        </div>
+        <div class="p-4">
+          <h3 class="font-bold" style="color:var(--accent)">Branch Topper — Thapar University</h3>
+          <p class="muted text-sm">Awarded Gold Medal as top student across entire B.Tech Mechanical Engineering batch (2019–2023).</p>
+        </div>
+      </div>
+
+      <!-- Academic Excellence -->
+      <div
+        class="panel block overflow-hidden"
+        data-aos="fade-up"
+        data-aos-delay="160"
+      >
+        <div style="background: linear-gradient(135deg, #4F46E5 0%, #3B82F6 100%); padding: 40px 20px; display: flex; align-items: center; justify-content: center; height: 200px;">
+          <div style="text-align: center; color: white;">
+            <i data-feather="star" style="width: 48px; height: 48px; margin: 0 auto 10px;"></i>
+            <p style="font-size: 0.85rem; font-weight: 600;">Top Scholar</p>
+          </div>
+        </div>
+        <div class="p-4">
+          <h3 class="font-bold" style="color:var(--accent)">Consecutive Rank 1 & Merit Scholarships</h3>
+          <p class="muted text-sm">1st position in branch (2020–2021, 2021–2022) and top 10% merit scholarships (2021–2023).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-12">
+    <div class="container max-w-4xl mx-auto">      <h2 class="text-3xl font-bold mb-8 text-center" style="color:var(--text)">Get In Touch</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div data-aos="fade-right">
+          <h3 class="text-xl font-semibold mb-4" style="color:var(--accent)">Contact Information</h3>
+          <p class="muted mb-6">Feel free to reach out if you have a question, or just want to connect.</p>
+
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <i data-feather="mail" class="text-[var(--accent)]"></i>
+              <span class="muted"><a href="mailto:rajatarora.arora@mail.utoronto.ca" style="color: inherit; text-decoration: none;">rajatarora.arora@mail.utoronto.ca</a></span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i data-feather="phone" class="text-[var(--accent)]"></i>
+              <span class="muted">+1 (647) 649-5062</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i data-feather="map-pin" class="text-[var(--accent)]"></i>
+              <span class="muted">Toronto, Ontario</span>
+            </div>
+          </div>
+
+          <div class="mt-6 flex gap-4">
+            <a href="https://github.com/Rajat-Arora/" class="text-[var(--text)] hover:text-[var(--accent)]" rel="noopener" target="_blank"><i data-feather="github"></i></a>
+            <a href="https://www.linkedin.com/in/rajat-arora-3a1a48161/" class="text-[var(--text)] hover:text-[var(--accent)]" rel="noopener" target="_blank"><i data-feather="linkedin"></i></a>
+          </div>
+        </div>
+
+        <div data-aos="fade-left">
+          <!-- enhanced contact form with client validation and inline success msg -->
+          <!-- Recommended: replace action with Formspree/Netlify endpoint for production. -->
+          <form id="contactForm" method="POST" class="space-y-4 panel p-6" style="background: rgba(255,255,255,0.9); border: 1px solid rgba(59,130,246,0.1);">
+            <div>
+              <label for="name" class="block text-sm font-medium mb-2" style="color:var(--text)">Name</label>
+              <input id="name" name="name" type="text" class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[var(--accent)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-opacity-20 bg-white" placeholder="Your name" required />
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-medium mb-2" style="color:var(--text)">Email</label>
+              <input id="email" name="email" type="email" class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[var(--accent)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-opacity-20 bg-white" placeholder="your@email.com" required />
+            </div>
+
+            <div>
+              <label for="message" class="block text-sm font-medium mb-2" style="color:var(--text)">Message</label>
+              <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[var(--accent)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-opacity-20 bg-white resize-none" placeholder="Your message here..." required></textarea>
+            </div>
+
+            <div id="formStatus" class="text-sm" aria-live="polite" role="status"></div>
+
+            <div class="flex gap-3">
+              <button type="submit" class="btn btn-primary">Send Message <i data-feather="send" class="ml-2"></i></button>
+              <a href="mailto:rajatarora.arora@mail.utoronto.ca" class="btn btn-secondary">Email Directly</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-8 bg-[var(--cream)]">
+    <div class="container text-center text-sm muted">© 2025 Rajat Arora. All rights reserved.</div>
+  </footer>
+
+  <!-- Init AOS and Feather -->
+  <script>
+    document.addEventListener('DOMContentLoaded', ()=>{
+      // disable AOS on small screens to avoid jank
+      AOS.init({ duration: 700, once: true, disable: window.innerWidth < 600 });
+      feather.replace();
+
+      // Mobile nav toggle (improved)
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileNav = document.getElementById('mobileNav');
+      const mobileClose = document.getElementById('mobileClose');
+      const overlayHit = mobileNav?.querySelector('.overlay-hit');
+
+      function openMobile(){ 
+        mobileNav?.classList.remove('hidden'); 
+        requestAnimationFrame(()=> mobileNav?.classList.add('open'));
+        mobileNav?.setAttribute('aria-hidden','false'); 
+        menuToggle?.setAttribute('aria-expanded','true'); 
+        document.body.style.overflow = 'hidden';
+        const firstLink = mobileNav.querySelector('nav a');
+        firstLink?.focus();
+      }
+      function closeMobile(){ 
+        mobileNav?.classList.remove('open'); 
+        mobileNav?.setAttribute('aria-hidden','true'); 
+        menuToggle?.setAttribute('aria-expanded','false'); 
+        document.body.style.overflow = '';
+        const onEnd = () => { mobileNav?.classList.add('hidden'); mobileNav?.removeEventListener('transitionend', onEnd); };
+        mobileNav?.addEventListener('transitionend', onEnd);
+        menuToggle?.focus();
+      }
+      menuToggle?.addEventListener('click', ()=>{ const expanded = menuToggle.getAttribute('aria-expanded') === 'true'; if(expanded) closeMobile(); else openMobile(); });
+      mobileClose?.addEventListener('click', closeMobile);
+      overlayHit?.addEventListener('click', closeMobile);
+
+      // Contact form validation and fake submit (replace with real endpoint)
+      const form = document.getElementById('contactForm');
+      const status = document.getElementById('formStatus');
+      form?.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        status.textContent = '';
+        const email = form.email.value.trim();
+        const name = form.name.value.trim();
+        const msg = form.message.value.trim();
+        const validEmail = /.+@.+\..+/.test(email);
+        if(!name || !validEmail || !msg){
+          status.textContent = 'Please provide a valid name, email and message.';
+          return;
+        }
+        // Simulate success — replace with fetch() to your form backend
+        status.textContent = 'Sending...';
+        setTimeout(()=>{ status.textContent = 'Thanks — your message has been received. I will respond within a few days.'; form.reset(); }, 900);
+      });
+
+      // Small accessibility: trap focus in mobile nav when open (simple)
+      document.addEventListener('keydown', (ev)=>{
+        if(ev.key === 'Escape') closeMobile();
+      });
+
+    });
+  </script>
+</body>
+</html>
