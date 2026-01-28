@@ -195,7 +195,6 @@
         <a href="#experience" class="nav-link">Experience</a>
         <a href="#projects" class="nav-link">Projects</a>
         <a href="#publications" class="nav-link">Achievements</a>
-        <a href="#blog" class="nav-link">Blog</a>
         <a href="#contact" class="nav-link">Contact</a>
       </nav>
 
@@ -220,7 +219,6 @@
           <a href="#experience" class="py-2">Experience</a>
           <a href="#projects" class="py-2">Projects</a>
           <a href="#publications" class="py-2">Achievements</a>
-          <a href="#blog" class="py-2">Blog</a>
           <a href="#contact" class="py-2">Contact</a>
         </nav>
       </div>
@@ -252,7 +250,7 @@
         <div class="flex gap-3 items-center">
           <a href="#contact" class="btn btn-primary" role="button">Get In Touch <i data-feather="send" class="ml-2"></i></a>
           <a href="#projects" class="btn btn-primary">View Projects</a>
-          <a href="assets/RajatArora_resume.pdf" class="btn btn-secondary" download>Download CV</a>
+          <a href="assets/RajatArora_resume.pdf" class="btn btn-primary" download>Download CV</a>
         </div>
       </div>
 
@@ -289,7 +287,7 @@
         <!-- footer area (stays pinned to bottom) -->
         <div class="mt-6 flex items-center gap-3">
           <a href="#contact" class="btn btn-primary">Get In Touch <i data-feather="send" class="ml-2"></i></a>
-          <a href="assets/RajatArora_resume.pdf" class="btn btn-secondary" download>Download CV</a>
+          <a href="assets/RajatArora_resume.pdf" class="btn btn-primary" download>Download CV</a>
         </div>
       </article>
 
@@ -376,10 +374,11 @@
               <li>Ensured data integrity for supervised AI model training with robust validation pipelines.</li>
             </ul>
           </div>
-          <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white">
-            <img src="assets/gifs/velo2.gif?v=20250919"
-                 alt="6DOF pose estimation demo"
-                 class="w-full h-36 md:h-44 object-cover"
+          <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white" style="width: 100%; aspect-ratio: 2/1;">
+            <img src="assets/gifs/pallet_pose.gif?v=20250919"
+                 alt="3DOF pose estimation demo"
+                 class="w-full h-full"
+                 style="object-fit: fill;"
                  loading="lazy" decoding="async">
           </div>
         </div>
@@ -394,10 +393,11 @@
               <li>Integrated pose outputs with robot control stack for precise autonomous docking operations.</li>
             </ul>
           </div>
-          <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white">
-            <img src="assets/gifs/slam-velo.gif?v=20250919"
+          <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white" style="width: 100%; aspect-ratio: 2/1;">
+            <img src="assets/gifs/segmentationUtility.gif?v=20250919"
                  alt="Visual-inertial SLAM demo"
-                 class="w-full h-36 md:h-44 object-cover"
+                 class="w-full h-full"
+                 style="object-fit: fill;"
                  loading="lazy" decoding="async">
           </div>
         </div>
@@ -412,10 +412,11 @@
               <li>Validated algorithms against ground truth data for production deployment readiness.</li>
             </ul>
           </div>
-          <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white">
-            <img src="assets/gifs/velo3.gif?v=20250919"
+          <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white" style="width: 100%; aspect-ratio: 2/1;">
+            <img src="assets/gifs/segmentToPC.gif?v=20250919"
                  alt="Semantic segmentation demo"
-                 class="w-full h-36 md:h-44 object-cover"
+                 class="w-full h-full"
+                 style="object-fit: fill;"
                  loading="lazy" decoding="async">
           </div>
         </div>
@@ -430,10 +431,11 @@
               <li>Optimized model inference for real-time performance on embedded platforms.</li>
             </ul>
           </div>
-          <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white">
-            <img src="assets/gifs/simu_velo.gif?v=20250919"
+          <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white" style="width: 100%; aspect-ratio: 2/1;">
+            <img src="assets/gifs/planner.gif?v=20250919"
                  alt="Simulation demo"
-                 class="w-full h-36 md:h-44 object-cover"
+                 class="w-full h-full"
+                 style="object-fit: fill;"
                  loading="lazy" decoding="async">
           </div>
         </div>
@@ -448,10 +450,11 @@
               <li>Validated navigation algorithms in simulation and real-world warehouse environments.</li>
             </ul>
           </div>
-          <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white">
-            <img src="assets/gifs/goa_velo.gif?v=20250919"
+          <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white" style="width: 100%; aspect-ratio: 2/1;">
+            <img src="assets/gifs/kinematic_library.gif?v=20250919"
                  alt="On-site deployment demo"
-                 class="w-full h-36 md:h-44 object-cover"
+                 class="w-full h-full"
+                 style="object-fit: fill;"
                  loading="lazy" decoding="async">
           </div>
         </div>
@@ -480,8 +483,12 @@
             <li>Implemented core algorithms in C language for optimized deployment on resource-constrained embedded devices.</li>
           </ul>
         </div>
-        <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white" style="background: #f0f9ff;">
-          <div style="display: flex; align-items: center; justify-content: center; height: 100%; padding: 20px; font-weight: 600; color: var(--accent);">Sensor Fusion System</div>
+        <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white" style="width: 100%; aspect-ratio: 1.8/1;">
+          <img src="assets/gifs/ai-imu-dr.gif?v=20250919"
+               alt="AI-enhanced IMU dead reckoning demo"
+               class="w-full h-full"
+               style="object-fit: fill;"
+               loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -507,11 +514,12 @@
             <li>Conducted technical workshop on ROS framework and quaternion mathematics for research community.</li>
           </ul>
         </div>
-        <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white" style="background: #f0f9ff;">
-          <div style="display: flex; align-items: center; justify-content: center; height: 100%; padding: 20px; font-weight: 600; color: var(--accent);">Visual-Inertial Fusion</div>
-        </div>
-      </div>
-    </div>
+      <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white" style="width: 100%; aspect-ratio: 1.8/1;">
+        <img src="assets/gifs/msckf_euroc.png?v=20250919"
+             alt="Visual-Inertial SLAM demo"
+             class="w-full h-full"
+             style="object-fit: fill;"
+             loading="lazy" decoding="async">
 
        <!-- Second DRDO removed, keeping only one instance for portfolio balance -->
 
@@ -532,11 +540,12 @@
 
         <!-- Morla Hardware Project -->
         <article class="project-card panel">
-          <div style="background: linear-gradient(135deg, var(--accent) 0%, #0EA5E9 100%); height: 160px; display: flex; align-items: center; justify-content: center;">
-            <div style="text-align: center; color: white;">
-              <i data-feather="cpu" style="width: 40px; height: 40px; margin: 0 auto 10px;"></i>
-              <p style="font-size: 0.9rem; font-weight: 600;">Mobile Platform</p>
-            </div>
+          <div style="width: 100%; aspect-ratio: 1.5/1; overflow: hidden; border-radius: 0.5rem 0.5rem 0 0;">
+            <img src="assets/gifs/Morla.gif?v=20250919"
+                 alt="Morla mobile robot demo"
+                 class="w-full h-full"
+                 style="object-fit: fill;"
+                 loading="lazy" decoding="async">
           </div>
           <div class="card-padded">
             <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Morla: Autonomous Mobile Robot</h3>
@@ -552,11 +561,12 @@
 
         <!-- Path Planning Visualizer -->
         <article class="project-card panel">
-          <div style="background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%); height: 160px; display: flex; align-items: center; justify-content: center;">
-            <div style="text-align: center; color: white;">
-              <i data-feather="map" style="width: 40px; height: 40px; margin: 0 auto 10px;"></i>
-              <p style="font-size: 0.9rem; font-weight: 600;">Path Planning</p>
-            </div>
+          <div style="width: 100%; aspect-ratio: 1.5/1; overflow: hidden; border-radius: 0.5rem 0.5rem 0 0;">
+            <img src="assets/gifs/pp_viz.gif?v=20250919"
+                 alt="Path planning visualizer demo"
+                 class="w-full h-full"
+                 style="object-fit: fill;"
+                 loading="lazy" decoding="async">
           </div>
           <div class="card-padded">
             <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Path Planning Visualizer</h3>
@@ -571,15 +581,16 @@
 
         <!-- Robotics Simulation -->
         <article class="project-card panel">
-          <div style="background: linear-gradient(135deg, #EC4899 0%, #F97316 100%); height: 160px; display: flex; align-items: center; justify-content: center;">
-            <div style="text-align: center; color: white;">
-              <i data-feather="play" style="width: 40px; height: 40px; margin: 0 auto 10px;"></i>
-              <p style="font-size: 0.9rem; font-weight: 600;">Simulation</p>
-            </div>
+          <div style="width: 100%; aspect-ratio: 1.5/1; overflow: hidden; border-radius: 0.5rem 0.5rem 0 0;">
+            <img src="assets/gifs/image_captioning.png?v=20250919"
+                 alt="Neural Scene Understanding (Image Captioning)"
+                 class="w-full h-full"
+                 style="object-fit: fill;"
+                 loading="lazy" decoding="async">
           </div>
           <div class="card-padded">
-            <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Autonomous Navigation & 3D Mapping</h3>
-            <p class="muted mb-4">Simulated autonomous navigation, 3D mapping with RTABMap, and ball-chasing robots using Gazebo and RViz with integrated sensor models.</p>
+            <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Neural Scene Understanding (Image Captioning)</h3>
+            <p class="muted mb-4">Architected an Encoder-Decoder model (ResNet + LSTM) to generate semantic descriptions of visual scenes. Demonstrated proficiency in sequence modeling and handling temporal dependencies, essential for classifying complex motor behaviors.</p>
             <div class="flex flex-wrap gap-2">
               <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Gazebo</span>
               <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">RViz</span>
@@ -589,56 +600,64 @@
           </div>
         </article>
 
-        <!-- Sample Project 1 -->
+        <!-- Facial Keypoint Detection -->
         <article class="project-card panel">
-          <div style="background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%); height: 160px; display: flex; align-items: center; justify-content: center;">
-            <div style="text-align: center; color: white;">
-              <i data-feather="box" style="width: 40px; height: 40px; margin: 0 auto 10px;"></i>
-              <p style="font-size: 0.9rem; font-weight: 600;">Project 1</p>
-            </div>
+          <div style="width: 100%; aspect-ratio: 1.5/1; overflow: hidden; border-radius: 0.5rem 0.5rem 0 0;">
+            <img src="assets/gifs/facial_keypoints.gif?v=20250919"
+                 alt="Facial keypoint detection demo"
+                 class="w-full h-full"
+                 style="object-fit: fill;"
+                 loading="lazy" decoding="async">
           </div>
           <div class="card-padded">
-            <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Project Title</h3>
-            <p class="muted mb-4">Add project description here.</p>
+            <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Facial Keypoint Detection</h3>
+            <p class="muted mb-4">Deep learning model for detecting facial landmarks and keypoints using convolutional neural networks for real-time face analysis.</p>
             <div class="flex flex-wrap gap-2">
-              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Tag1</span>
-              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Tag2</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">PyTorch</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Computer Vision</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">CNN</span>
             </div>
           </div>
         </article>
 
         <!-- Sample Project 2 -->
         <article class="project-card panel">
-          <div style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); height: 160px; display: flex; align-items: center; justify-content: center;">
-            <div style="text-align: center; color: white;">
-              <i data-feather="box" style="width: 40px; height: 40px; margin: 0 auto 10px;"></i>
-              <p style="font-size: 0.9rem; font-weight: 600;">Project 2</p>
-            </div>
+          <div style="width: 100%; aspect-ratio: 1.5/1; overflow: hidden; border-radius: 0.5rem 0.5rem 0 0;">
+            <img src="assets/gifs/f1Tenth.gif?v=20250919"
+                 alt="F1Tenth autonomous racing demo"
+                 class="w-full h-full"
+                 style="object-fit: fill;"
+                 loading="lazy" decoding="async">
           </div>
           <div class="card-padded">
-            <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Project Title</h3>
-            <p class="muted mb-4">Add project description here.</p>
+            <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">F1Tenth Autonomous Racing</h3>
+            <p class="muted mb-4">Implemented reactive methods, PLICP scan matching, Pure Pursuit controller, and RRT path planning for autonomous racing in F1Tenth competition.</p>
             <div class="flex flex-wrap gap-2">
-              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Tag1</span>
-              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Tag2</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">ROS</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">SLAM</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Path Planning</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Control</span>
             </div>
           </div>
         </article>
 
         <!-- Sample Project 3 -->
         <article class="project-card panel">
-          <div style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); height: 160px; display: flex; align-items: center; justify-content: center;">
-            <div style="text-align: center; color: white;">
-              <i data-feather="box" style="width: 40px; height: 40px; margin: 0 auto 10px;"></i>
-              <p style="font-size: 0.9rem; font-weight: 600;">Project 3</p>
-            </div>
+          <div style="width: 100%; aspect-ratio: 1.5/1; overflow: hidden; border-radius: 0.5rem 0.5rem 0 0;">
+            <img src="assets/gifs/robot_sim.gif?v=20250919"
+                 alt="Udacity robotics simulation demo"
+                 class="w-full h-full"
+                 style="object-fit: fill;"
+                 loading="lazy" decoding="async">
           </div>
           <div class="card-padded">
-            <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Project Title</h3>
-            <p class="muted mb-4">Add project description here.</p>
+            <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Udacity Robotics Software Engineer Nanodegree</h3>
+            <p class="muted mb-4">Completed advanced robotics projects using RTABMap for SLAM and 3D mapping, autonomous navigation to waypoints using MoveBase and AMCL for localization, and implemented white ball tracking and following algorithms.</p>
             <div class="flex flex-wrap gap-2">
-              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Tag1</span>
-              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Tag2</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">ROS</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Gazebo</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">SLAM</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Navigation</span>
             </div>
           </div>
         </article>
@@ -659,11 +678,12 @@
         data-aos="fade-up"
         data-aos-delay="80"
       >
-        <div style="background: linear-gradient(135deg, var(--accent) 0%, #0EA5E9 100%); padding: 40px 20px; display: flex; align-items: center; justify-content: center; height: 200px;">
-          <div style="text-align: center; color: white;">
-            <i data-feather="rocket" style="width: 48px; height: 48px; margin: 0 auto 10px;"></i>
-            <p style="font-size: 0.85rem; font-weight: 600;">International Rover Challenge</p>
-          </div>
+        <div style="width: 100%; aspect-ratio: 13/9; overflow: hidden;">
+          <img src="assets/gifs/emergingTeam.png?v=20250919"
+               alt="International Rover Challenge team and rover"
+               class="w-full h-full"
+               style="object-fit: cover;"
+               loading="lazy" decoding="async">
         </div>
         <div class="p-4">
           <h3 class="font-bold" style="color:var(--accent)">Emerging Team of the Year — 2023</h3>
@@ -677,11 +697,12 @@
         data-aos="fade-up"
         data-aos-delay="120"
       >
-        <div style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); padding: 40px 20px; display: flex; align-items: center; justify-content: center; height: 200px;">
-          <div style="text-align: center; color: white;">
-            <i data-feather="award" style="width: 48px; height: 48px; margin: 0 auto 10px;"></i>
-            <p style="font-size: 0.85rem; font-weight: 600;">Gold Medal</p>
-          </div>
+        <div style="width: 100%; aspect-ratio: 13/9; overflow: hidden;">
+          <img src="assets/gifs/goldMedal.gif?v=20250919"
+               alt="Gold Medal achievement"
+               class="w-full h-full"
+               style="object-fit: cover;"
+               loading="lazy" decoding="async">
         </div>
         <div class="p-4">
           <h3 class="font-bold" style="color:var(--accent)">Branch Topper — Thapar University</h3>
@@ -695,11 +716,12 @@
         data-aos="fade-up"
         data-aos-delay="160"
       >
-        <div style="background: linear-gradient(135deg, #4F46E5 0%, #3B82F6 100%); padding: 40px 20px; display: flex; align-items: center; justify-content: center; height: 200px;">
-          <div style="text-align: center; color: white;">
-            <i data-feather="star" style="width: 48px; height: 48px; margin: 0 auto 10px;"></i>
-            <p style="font-size: 0.85rem; font-weight: 600;">Top Scholar</p>
-          </div>
+        <div style="width: 100%; aspect-ratio: 13/9; overflow: hidden;">
+          <img src="assets/gifs/certificate.JPG?v=20250919"
+               alt="Academic excellence certificate"
+               class="w-full h-full"
+               style="object-fit: cover;"
+               loading="lazy" decoding="async">
         </div>
         <div class="p-4">
           <h3 class="font-bold" style="color:var(--accent)">Consecutive Rank 1 & Merit Scholarships</h3>
