@@ -1,5 +1,5 @@
 ### My Portfolio 
-This is portfolio website of Siddharth Rama Sushil.
+This is portfolio website of Rajat Arora.
 
 ### Run
 ```bash 

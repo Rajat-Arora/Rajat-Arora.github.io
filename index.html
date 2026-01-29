@@ -237,14 +237,14 @@
       <!-- name + tagline + short about -->
       <div class="py-6 md:py-0" data-aos="fade-up" data-aos-delay="120">
         <h1 class="hero-title font-extrabold leading-tight mb-4" style="font-size:var(--fs-h1); color:var(--text)">Rajat Arora</h1>
-        <p class="text-lg md:text-xl mb-6" style="color:var(--text)"><strong>Mobile Robotics</strong> | <strong>State Estimation</strong> | <strong>Embedded Systems</strong> | <strong>Deep Learning</strong> </p>
+        <p class="text-lg md:text-xl mb-6" style="color:var(--text)"><strong>Robotics</strong> | <strong>State Estimation</strong> | <strong>Perception</strong> </p>
 
-        <p class="muted mb-6">I develop robust robotics systems combining hardware drivers, perception algorithms, and state estimation. Specialized in multi-sensor fusion, autonomous navigation, and deploying ML models on resource-constrained platforms.</p>
+        <p class="muted mb-6">Robotics Engineer with 2+ years of experience in full stack development for autonomous mobile robots. Specialized in bridging complex state estimation research with production ready C++ systems, real-time hardware control, and embedded AI perception.</p>
 
         <div class="flex flex-wrap gap-3 mb-6">
           <span class="px-3 py-2 rounded-full text-sm font-medium" style="background:var(--khaki); color:var(--text)">State Estimation</span>
           <span class="px-3 py-2 rounded-full text-sm font-medium" style="background:var(--khaki); color:var(--text)">Motion Planning</span>
-          <span class="px-3 py-2 rounded-full text-sm font-medium" style="background:var(--khaki); color:var(--text)">Autonomous Navigation</span>
+          <span class="px-3 py-2 rounded-full text-sm font-medium" style="background:var(--khaki); color:var(--text)">Deep Learning</span>
         </div>
 
         <div class="flex gap-3 items-center">
@@ -266,21 +266,21 @@
       <article class="panel p-6 h-full flex flex-col" data-aos="fade-right">
         <!-- main content that grows -->
         <div class="flex-1">
-          <h2 class="text-2xl font-bold mb-4" style="color:var(--text)">About Me</h2>
+<h2 class="text-2xl font-bold mb-4" style="color:var(--text)">About Me</h2>
 
-          <p class="muted mb-4">
-            Currently pursuing MEng. in Aerospace at the University of Toronto. I have hands-on experience developing mobile robotics systems with a focus on hardware integration, state estimation, and perception algorithms.
-          </p>
+<p class="muted mb-4">
+  Currently pursuing an MEng in Aerospace at the University of Toronto, I am a Robotics Engineer focused on the intersection of <strong>high fidelity state estimation</strong> and <strong>real world embedded deployment.</strong>
+</p>
 
-          <p class="muted mb-4">
-            I specialize in multi-sensor fusion (LiDAR, IMU, cameras), real-time embedded systems programming, and deploying deep learning models on resource-constrained platforms. Experienced with motion planning, odometry, and autonomous navigation for wheeled robots.
-          </p>
+<p class="muted mb-4">
+  My expertise lies in bridging the gap between theoretical research, such as Lie Group-based IEKF and MSCKF architectures and production ready systems. Having developed full stack solutions for industrial AMRs, I specialize in multi-sensor fusion (LiDAR, IMU, Vision), kinematic motion planning, and optimizing deep learning inference for resource constrained hardware.
+</p>
 
           <div class="mt-4 flex flex-wrap gap-3">
             <span class="px-3 py-2 rounded-full" style="background:var(--khaki); color:var(--text); font-weight:600;">C++ / C</span>
             <span class="px-3 py-2 rounded-full" style="background:var(--khaki); color:var(--text); font-weight:600;">Python</span>
             <span class="px-3 py-2 rounded-full" style="background:var(--khaki); color:var(--text); font-weight:600;">EtherCAT / CAN / Modbus</span>
-            <span class="px-3 py-2 rounded-full" style="background:var(--khaki); color:var(--text); font-weight:600;">Deep Learning</span>
+            <span class="px-3 py-2 rounded-full" style="background:var(--khaki); color:var(--text); font-weight:600;">Computer Vision</span>
           </div>
         </div>
 
@@ -329,9 +329,11 @@
               <div>
                 <p class="font-medium text-sm mb-1">Relevant courses</p>
                 <ul class="text-sm muted list-disc list-inside ml-1">
-                  <li>Human-centric Robotics</li>
-                  <li>Industrial IoT,</li>
-                  <li>Smart Sensors</li>
+                  <li>Medical Image Processing</li>
+                  <li>Optimization Methods</li>
+                  <li>Robotics Engineering</li>
+                  <li>Numerical Analysis</li>
+                  <li>Machine Learning and Image Processing</li>
                 </ul>
               </div>
             </div>
@@ -352,7 +354,7 @@
     <h2 class="text-3xl font-bold mb-8 text-center" style="color:var(--text)">Experience</h2>
 
     <!-- Addverb -->
-    <div class="panel p-6 md:p-8 mb-8" data-aos="fade-up">
+    <div class="panel p-6 md:p-8 mb-6" data-aos="fade-up">
       <div class="flex items-center gap-4 mb-4">
         <!-- replaced background-div with an img using logo-circle helper -->
         <img src="assets/c.jpeg?v=20250919" alt="Addverb logo" class="logo-circle" loading="lazy" decoding="async" />
@@ -362,16 +364,23 @@
         </div>
       </div>
 
-      <div class="space-y-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+      <div class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
           <div>
-            <h4 class="text-lg font-semibold" style="color:var(--accent)">Hardware Drivers & Real-Time Control</h4>
+            <!-- <h4 class="text-lg font-semibold" style="color:var(--accent)">Hardware Drivers & Real-Time Control</h4>
             <p class="muted mb-3">Developed C++ drivers for motor control and sensor communication across multiple protocols.</p>
             <ul class="list-disc list-inside muted text-sm space-y-1">
               <li>Built C++ hardware drivers for real-time motor parameter control (velocities, torques).</li>
               <li>Implemented PLC communication and BMS integration using EtherCAT, CAN, and Modbus protocols.</li>
               <li>Developed Python utilities for automatic dataset labeling for bounding boxes and segmentation masks.</li>
               <li>Ensured data integrity for supervised AI model training with robust validation pipelines.</li>
+            </ul> -->
+            <h4 class="text-lg font-semibold" style="color:var(--accent)">3-DOF Perception & Precise Docking</h4> 
+            <p class="muted mb-3">Developed a deep learning based perception system for autonomous forklifts to identify and dock with pallets in dynamic environments.</p> 
+            <ul class="list-disc list-inside muted text-sm space-y-1"> 
+              <li>Leveraged RGB-D data and point cloud processing to estimate precise 3-DOF poses (x, y, θ).</li> 
+              <li>Validated pose estimation accuracy using internal datasets and simulation environments for production readiness.</li> 
+              <li>Integrated vision based pose outputs with the robot control stack for precise autonomous docking operations.</li> 
             </ul>
           </div>
           <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white" style="width: 100%; aspect-ratio: 2/1;">
@@ -383,14 +392,21 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center md:flex-row-reverse">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center md:flex-row-reverse">
           <div>
-            <h4 class="text-lg font-semibold" style="color:var(--accent)">3DOF Pose Estimation & Point Cloud Processing</h4>
+            <!-- <h4 class="text-lg font-semibold" style="color:var(--accent)">3DOF Pose Estimation & Point Cloud Processing</h4>
             <p class="muted mb-3">Implemented deep learning-based pose estimation for autonomous docking and manipulation.</p>
             <ul class="list-disc list-inside muted text-sm space-y-1">
               <li>Developed 3DOF pallet pose estimation leveraging deep learning and point cloud processing.</li>
               <li>Validated results using internal datasets and simulation environments for accuracy.</li>
               <li>Integrated pose outputs with robot control stack for precise autonomous docking operations.</li>
+            </ul> -->
+            <h4 class="text-lg font-semibold" style="color:var(--accent)">Automated AI Data Pipeline</h4> 
+            <p class="muted mb-3">Engineered a Python based utility to accelerate the model training cycle through iterative "human-in-the-loop" labeling.</p> 
+            <ul class="list-disc list-inside muted text-sm space-y-1"> 
+              <li>Developed a utility for automatic dataset labeling of bounding boxes and segmentation masks.</li> 
+              <li>Enabled iterative model improvement by using initial inference to generate and subsequently correct training samples.</li> 
+              <li>Ensured high data integrity for supervised AI model training through robust validation pipelines.</li> 
             </ul>
           </div>
           <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white" style="width: 100%; aspect-ratio: 2/1;">
@@ -402,14 +418,21 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
           <div>
-            <h4 class="text-lg font-semibold" style="color:var(--accent)">Multi-Sensor State Estimation & Localization</h4>
+            <!-- <h4 class="text-lg font-semibold" style="color:var(--accent)">Multi-Sensor State Estimation & Localization</h4>
             <p class="muted mb-3">Implemented advanced state estimation for robust localization in dynamic environments.</p>
             <ul class="list-disc list-inside muted text-sm space-y-1">
               <li>Fused multi-sensor data (LiDAR, IMU, wheel odometry) using non-linear optimization.</li>
               <li>Developed algorithms for accurate robot localization in dynamic warehouse environments.</li>
               <li>Validated algorithms against ground truth data for production deployment readiness.</li>
+            </ul> -->
+            <h4 class="text-lg font-semibold" style="color:var(--accent)">Semantic Segmentation & 3D Mapping</h4> 
+            <p class="muted mb-3">Implemented a U-Net based semantic segmentation pipeline for real-time obstacle detection and navigation.</p> 
+            <ul class="list-disc list-inside muted text-sm space-y-1"> 
+              <li>Trained semantic segmentation models using synthetic data and monocular camera feeds.</li> 
+              <li>Deployed a point cloud generation pipeline based on intrinsic camera geometry to project obstacles into 3D space.</li> 
+              <li>Optimized model inference performance to meet real time requirements on embedded edge devices.</li> 
             </ul>
           </div>
           <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white" style="width: 100%; aspect-ratio: 2/1;">
@@ -421,14 +444,29 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center md:flex-row-reverse">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center md:flex-row-reverse">
           <div>
-            <h4 class="text-lg font-semibold" style="color:var(--accent)">Semantic Segmentation for Obstacle Detection</h4>
+            <!-- <h4 class="text-lg font-semibold" style="color:var(--accent)">Semantic Segmentation for Obstacle Detection</h4>
             <p class="muted mb-3">Trained and deployed ML models for robust obstacle detection in navigation systems.</p>
             <ul class="list-disc list-inside muted text-sm space-y-1">
               <li>Trained semantic segmentation model for obstacle detection using synthetic data and monocular cameras.</li>
               <li>Deployed point cloud generation pipeline for enhanced navigation and safety.</li>
               <li>Optimized model inference for real-time performance on embedded platforms.</li>
+            </ul> -->
+            <h4 class="text-lg font-semibold" style="color:var(--accent)">Kinematically Constrained Local Planning</h4>
+            <p class="muted mb-3">
+              Developed a specialized local planner for "tugger" AMRs with hinged trailers to bridge the gap between fleet level global paths and physical kinematic limits.
+            </p>
+            <ul class="list-disc list-inside muted text-sm space-y-1">
+              <li>
+                <strong>Non-Holonomic Motion Planning:</strong> Implemented a local planner inspired by Hybrid A* to generate smooth, feasible trajectories that adhere to strict curvature constraints.
+              </li>
+              <li>
+                <strong>Trajectory Optimization:</strong> Enabled the robot to autonomously deviate from fleet node graphs to satisfy mechanical steering limits while maintaining path following stability.
+              </li>
+              <li>
+                <strong>Real World Validation:</strong> Validated the planner's performance in high density warehouse environments to prevent jackknifing and ensure collision free navigation.
+              </li>
             </ul>
           </div>
           <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white" style="width: 100%; aspect-ratio: 2/1;">
@@ -440,14 +478,21 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
           <div>
-            <h4 class="text-lg font-semibold" style="color:var(--accent)">Motion Planning & Autonomous Navigation</h4>
+            <!-- <h4 class="text-lg font-semibold" style="color:var(--accent)">Motion Planning & Autonomous Navigation</h4>
             <p class="muted mb-3">Developed kinematic libraries and planning algorithms for autonomous mobile robots.</p>
             <ul class="list-disc list-inside muted text-sm space-y-1">
               <li>Authored kinematic libraries and global planners with motion primitives.</li>
               <li>Implemented planning for swerve and tricycle drive AMR models.</li>
               <li>Validated navigation algorithms in simulation and real-world warehouse environments.</li>
+            </ul> -->
+            <h4 class="text-lg font-semibold" style="color:var(--accent)">Hardware Drivers & Unified Kinematics</h4> 
+            <p class="muted mb-3">Architected a generic C++ middleware to decouple high level motion models from low level motor driver hardware.</p> 
+            <ul class="list-disc list-inside muted text-sm space-y-1"> 
+              <li>Built a unified C++ framework to map generic velocity commands to specific wheel/joint velocities across varied robot platforms.</li> 
+              <li>Developed real-time C++ drivers for motor control, PLC communication, and BMS integration.</li> 
+              <li>Standardized communication across multiple protocols including EtherCAT, CAN, and Modbus.</li> 
             </ul>
           </div>
           <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white" style="width: 100%; aspect-ratio: 2/1;">
@@ -463,7 +508,7 @@
     </div>
 
     <!-- Cartrack -->
-    <div class="panel p-6 md:p-8 mt-8" data-aos="fade-up" data-aos-delay="80">
+    <div class="panel p-6 md:p-8 mt-6" data-aos="fade-up" data-aos-delay="80">
       <div class="flex items-center gap-4 mb-4">
         <!-- Cartrack logo placeholder -->
         <img src="assets/photos/cartrackLogo.png" alt="Cartrack logo" class="logo-circle" loading="lazy" decoding="async" />
@@ -473,15 +518,32 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
         <div>
-          <p class="muted mb-3">Developed advanced state estimation algorithms for vehicle localization and navigation using sensor fusion techniques.</p>
+        <p class="muted mb-3">
+          Investigated and extended a DL based Invariant EKF (IEKF) framework for robust vehicle state estimation.
+        </p>
+        <ul class="list-disc list-inside muted text-sm space-y-1">
+          <li>
+            <strong>Math & Derivation:</strong> Derived GPS measurement Jacobians to extend a purely inertial research pipeline into a multi-sensor fusion system.
+          </li>
+          <li>
+            <strong>Experimental Analysis:</strong> Benchmarked GPS denied performance; conducted root cause analysis to isolate discrepancies between sensor noise and model assumptions.
+          </li>
+          <li>
+            <strong>Motion Modeling:</strong> Formulated kinematic constraints for car like vehicles to use as a pseudo measurement.
+          </li>
+          <li>
+            <strong>Embedded C:</strong> Ported the Python/PyTorch research code to optimized C for deployment on resource constrained hardware.
+          </li>
+        </ul>
+          <!-- <p class="muted mb-3">Developed state estimation algorithm for vehicle odometry using sensor fusion techniques.</p>
           <ul class="list-disc list-inside muted text-sm space-y-1">
-            <li>Integrated GPS into IMU-based odometry using Invariant Extended Kalman Filter (IEKF) with pseudo-measurement models.</li>
-            <li>Formulated motion constraint models for improved state estimation in car-like vehicles.</li>
+            <li>Integrated GPS as an additional measurement to IMU and pseudo measurement based pipeline considering kinematic constraints of a car formulated using Invariant Extended Kalman Filter (IEKF).</li>
+            <li>Formulated motion constraint models for improved state estimation in car like vehicles.</li>
             <li>Utilized Deep Learning (CNNs) for dynamic adaptation of covariance noise parameters.</li>
             <li>Implemented core algorithms in C language for optimized deployment on resource-constrained embedded devices.</li>
-          </ul>
+          </ul> -->
         </div>
         <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white" style="width: 100%; aspect-ratio: 1.8/1;">
           <img src="assets/gifs/ai-imu-dr.gif?v=20250919"
@@ -494,7 +556,7 @@
     </div>
 
     <!-- CSIR-CSIO -->
-    <div class="panel p-6 md:p-8 mt-8" data-aos="fade-up" data-aos-delay="100">
+    <div class="panel p-6 md:p-8 mt-6" data-aos="fade-up" data-aos-delay="100">
       <div class="flex items-center gap-4 mb-4">
         <!-- CSIR-CSIO logo placeholder -->
         <img src="assets/photos/csirlogo.jpeg" alt="CSIR-CSIO logo" class="logo-circle" loading="lazy" decoding="async" />
@@ -504,15 +566,30 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
         <div>
-          <p class="muted mb-3">Designed and implemented visual-inertial sensor fusion algorithms for GPS-denied aerial robotics applications.</p>
+          <!-- <p class="muted mb-3">Designed and implemented visual inertial sensor fusion algorithms for GPS denied environments.</p>
           <ul class="list-disc list-inside muted text-sm space-y-1">
-            <li>Developed MSCKF-based sensor fusion architecture for 6DOF pose estimation using synchronized stereo vision and IMU.</li>
-            <li>Implemented sparse descriptor-based visual odometry pipeline in C++ with ROS framework.</li>
-            <li>Integrated and validated multi-sensor fusion system on embedded hardware for real-time aerial robot navigation.</li>
+            <li>Developed MSCKF based sensor fusion architecture for 6DOF pose estimation using synchronized stereo vision and IMU.</li>
+            <li>Implemented sparse descriptor based stereo visual odometry pipeline in C++ with ROS framework.</li>
+            <li>Integrated and validated multi sensor fusion system on embedded hardware.</li>
             <li>Conducted technical workshop on ROS framework and quaternion mathematics for research community.</li>
-          </ul>
+          </ul> -->
+
+        <p class="muted mb-3">
+        Investigated the implementation and scalability of the Multi-State Constraint Kalman Filter (MSCKF) for stereo visual-inertial odometry.
+        </p>
+        <ul class="list-disc list-inside muted text-sm space-y-1">
+          <li>
+            <strong>System Implementation:</strong> Developed a stereo VO pipeline in C++ and ROS, translating complex MSCKF theory into a functional software architecture.
+          </li>
+          <li>
+            <strong>Feasibility Research:</strong> Conducted a 6 month technical deep-dive to identify potential research gaps in 6DOF pose estimation for GPS denied environments.
+          </li>
+          <li>
+            <strong>Knowledge Sharing:</strong> Synthesized complex concepts into technical workshops on quaternion mathematics and ROS for the broader research team.
+          </li>
+        </ul>
         </div>
       <div class="rounded-lg overflow-hidden ring-2 ring-[rgba(62,47,47,0.06)] bg-white" style="width: 100%; aspect-ratio: 1.8/1;">
         <img src="assets/gifs/msckf_euroc.png?v=20250919"
@@ -538,23 +615,22 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-        <!-- Morla Hardware Project -->
+        <!-- Facial Keypoint Detection -->
         <article class="project-card panel">
           <div style="width: 100%; aspect-ratio: 1.5/1; overflow: hidden; border-radius: 0.5rem 0.5rem 0 0;">
-            <img src="assets/gifs/Morla.gif?v=20250919"
-                 alt="Morla mobile robot demo"
+            <img src="assets/gifs/facial_keypoints.gif?v=20250919"
+                 alt="Facial keypoint detection demo"
                  class="w-full h-full"
                  style="object-fit: fill;"
                  loading="lazy" decoding="async">
           </div>
           <div class="card-padded">
-            <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Morla: Autonomous Mobile Robot</h3>
-            <p class="muted mb-4">Plug-and-play mobile platform for point-to-point navigation, LIDAR mapping, and odometry with extensive PID tuning.</p>
+            <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Facial Keypoint Detection</h3>
+            <p class="muted mb-4">Developed a CNN-based regression model to predict 68 facial keypoints. Created an app for real time facial analysis.</p>
             <div class="flex flex-wrap gap-2">
-              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">ROS</span>
-              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">SLAM</span>
-              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Teensy</span>
-              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Sensor Fusion</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">PyTorch</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Computer Vision</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">CNN</span>
             </div>
           </div>
         </article>
@@ -590,32 +666,33 @@
           </div>
           <div class="card-padded">
             <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Neural Scene Understanding (Image Captioning)</h3>
-            <p class="muted mb-4">Architected an Encoder-Decoder model (ResNet + LSTM) to generate semantic descriptions of visual scenes. Demonstrated proficiency in sequence modeling and handling temporal dependencies, essential for classifying complex motor behaviors.</p>
+            <p class="muted mb-4">Architected an Encoder-Decoder model (ResNet + LSTM) to generate semantic descriptions of visual scenes.</p>
             <div class="flex flex-wrap gap-2">
-              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Gazebo</span>
-              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">RViz</span>
-              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">RTABMap</span>
-              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">AMCL</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">PyTorch</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">ResNet</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">LSTM</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Computer Vision</span>
             </div>
           </div>
         </article>
 
-        <!-- Facial Keypoint Detection -->
+        <!-- Morla Hardware Project -->
         <article class="project-card panel">
           <div style="width: 100%; aspect-ratio: 1.5/1; overflow: hidden; border-radius: 0.5rem 0.5rem 0 0;">
-            <img src="assets/gifs/facial_keypoints.gif?v=20250919"
-                 alt="Facial keypoint detection demo"
+            <img src="assets/gifs/Morla.gif?v=20250919"
+                 alt="Morla mobile robot demo"
                  class="w-full h-full"
                  style="object-fit: fill;"
                  loading="lazy" decoding="async">
           </div>
           <div class="card-padded">
-            <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Facial Keypoint Detection</h3>
-            <p class="muted mb-4">Deep learning model for detecting facial landmarks and keypoints using convolutional neural networks for real-time face analysis.</p>
+            <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Morla: Autonomous Mobile Robot</h3>
+            <p class="muted mb-4">Plug and play mobile platform for point to point navigation, LIDAR mapping, and odometry.</p>
             <div class="flex flex-wrap gap-2">
-              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">PyTorch</span>
-              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Computer Vision</span>
-              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">CNN</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">ROS</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">SLAM</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Teensy</span>
+              <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Sensor Fusion</span>
             </div>
           </div>
         </article>
@@ -631,7 +708,7 @@
           </div>
           <div class="card-padded">
             <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">F1Tenth Autonomous Racing</h3>
-            <p class="muted mb-4">Implemented reactive methods, PLICP scan matching, Pure Pursuit controller, and RRT path planning for autonomous racing in F1Tenth competition.</p>
+            <p class="muted mb-4">Implemented reactive methods, PLICP scan matching, Pure Pursuit controller, and RRT path planning for autonomous racing in F1Tenth simulation.</p>
             <div class="flex flex-wrap gap-2">
               <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">ROS</span>
               <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">SLAM</span>
@@ -652,7 +729,7 @@
           </div>
           <div class="card-padded">
             <h3 class="text-xl font-bold mb-2" style="color:var(--accent)">Udacity Robotics Software Engineer Nanodegree</h3>
-            <p class="muted mb-4">Completed advanced robotics projects using RTABMap for SLAM and 3D mapping, autonomous navigation to waypoints using MoveBase and AMCL for localization, and implemented white ball tracking and following algorithms.</p>
+            <p class="muted mb-4">Completed coursework covering RTABMap, AMCL, MoveBase in simulated environments using ROS and Gazebo.</p>
             <div class="flex flex-wrap gap-2">
               <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">ROS</span>
               <span class="text-xs px-2 py-1 rounded-full" style="background:var(--khaki); color:var(--text)">Gazebo</span>
@@ -686,8 +763,8 @@
                loading="lazy" decoding="async">
         </div>
         <div class="p-4">
-          <h3 class="font-bold" style="color:var(--accent)">Emerging Team of the Year — 2023</h3>
-          <p class="muted text-sm">Designed rocker-bogie suspension for Mars rover, developed arm control drivers, trained YoloV8 for autonomous navigation.</p>
+          <h3 class="font-bold" style="color:var(--accent)">International Rover Challenge (Emerging Team of the Year - 2023)</h3>
+          <p class="muted text-sm">Developed drivers for control of arm and rover chassis, developed software stack for autonomous navigation task.</p>
         </div>
       </div>
 
@@ -705,8 +782,8 @@
                loading="lazy" decoding="async">
         </div>
         <div class="p-4">
-          <h3 class="font-bold" style="color:var(--accent)">Branch Topper — Thapar University</h3>
-          <p class="muted text-sm">Awarded Gold Medal as top student across entire B.Tech Mechanical Engineering batch (2019–2023).</p>
+          <h3 class="font-bold" style="color:var(--accent)">Branch Topper - Thapar Institute of Engineering and Technology (TIET)</h3>
+          <p class="muted text-sm">Awarded Gold Medal as top student across entire B.E. Mechatronics Engineering batch (2019–2023).</p>
         </div>
       </div>
 
@@ -724,7 +801,7 @@
                loading="lazy" decoding="async">
         </div>
         <div class="p-4">
-          <h3 class="font-bold" style="color:var(--accent)">Consecutive Rank 1 & Merit Scholarships</h3>
+          <h3 class="font-bold" style="color:var(--accent)">Consecutive Rank 1 & Merit Scholarships TIET</h3>
           <p class="muted text-sm">1st position in branch (2020–2021, 2021–2022) and top 10% merit scholarships (2021–2023).</p>
         </div>
       </div>
